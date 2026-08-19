@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Evaluación inicial y explicable de controles de compliance." />
+    <title>Compliance Pulse · Beta</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">COMPLIANCE PULSE <span>BETA</span></p>
+        <h1>Una señal clara sobre tu postura de cumplimiento.</h1>
+        <p class="intro">Completa una revisión rápida y obtén un score orientativo, riesgos prioritarios y próximos pasos.</p>
+      </div>
+      <div class="pulse" aria-hidden="true"><i></i><i></i><i></i></div>
+    </header>
+
+    <main>
+      <section class="panel" aria-labelledby="assessment-title">
+        <div class="section-heading">
+          <div><p class="step">01 · CONTEXTO</p><h2 id="assessment-title">Evaluación inicial</h2></div>
+          <button id="reset" class="text-button" type="button">Reiniciar</button>
+        </div>
+
+        <form id="assessment-form">
+          <div class="identity-grid">
+            <label>Organización o activo<input id="organization" name="organization" required maxlength="80" placeholder="Ej. Acme España" /></label>
+            <label>Sector<select id="sector" name="sector" required><option value="">Seleccionar</option><option>Tecnología</option><option>Servicios financieros</option><option>Salud</option><option>Retail</option><option>Industria</option><option>Otro</option></select></label>
+          </div>
+
+          <fieldset id="controls"><legend><span>02 · CONTROLES</span>Indica el estado actual</legend></fieldset>
+          <button class="primary" type="submit">Calcular Compliance Pulse <span>→</span></button>
+        </form>
+      </section>
+
+      <section id="result" class="panel result" aria-live="polite" hidden></section>
+      <p class="disclaimer">Herramienta orientativa. No constituye asesoramiento jurídico ni una auditoría formal.</p>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

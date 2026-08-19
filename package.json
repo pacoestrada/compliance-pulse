@@ -1,0 +1,13 @@
+{
+  "name": "compliance-pulse",
+  "version": "0.1.0-beta.1",
+  "private": true,
+  "description": "Beta demostrable para evaluar controles básicos de compliance.",
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
