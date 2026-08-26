@@ -1,6 +1,6 @@
 # Compliance Pulse
 
-Primera beta funcional de una evaluación rápida y explicable de compliance. Permite identificar una organización, responder siete controles y recibir un score ponderado, un estado y tres acciones prioritarias.
+Beta funcional de una evaluación guiada de compliance para pequeñas y medianas empresas españolas sin conocimientos previos. Traduce situaciones cotidianas del negocio en un mapa orientativo de riesgos y próximos pasos.
 
 > **Beta orientativa:** no sustituye asesoramiento jurídico ni una auditoría formal.
 
@@ -34,12 +34,21 @@ npm test
 
 ## Alcance de la beta
 
-- Evaluación de siete controles con respuesta Sí / Parcial / No.
+- Recorrido guiado de seis pasos con 17 preguntas en lenguaje cotidiano.
+- Cinco áreas: clientes y web, datos personales, equipo, proveedores y seguridad.
+- Respuestas claras: Sí, A medias / no estoy seguro, No y No aplica.
 - Score ponderado de 0 a 100.
-- Clasificación en Prioridad alta, En desarrollo o Sólido.
-- Recomendaciones ordenadas por impacto.
+- Puntuación desglosada por áreas.
+- Cinco acciones prioritarias con explicación del riesgo que ayudan a reducir.
+- Informe imprimible.
 - Diseño adaptable a móvil y accesibilidad básica.
 - Sin recogida ni envío de datos: todo se procesa en el navegador.
+
+## Criterio y fuentes
+
+El diagnóstico se basa en una matriz orientativa elaborada a partir de materiales públicos para pymes de la Agencia Española de Protección de Datos (AEPD), recomendaciones de ciberseguridad de INCIBE y normativa española aplicable, incluida la Ley 2/2023 para sistemas internos de información.
+
+No inspecciona la web ni los documentos de la empresa y no certifica el cumplimiento. El resultado depende de las respuestas declaradas y debe validarse con evidencias y asesoramiento profesional cuando proceda.
 
 ## Estructura
 
@@ -60,7 +69,7 @@ app.test.js     Pruebas del motor de scoring
 
 ## Versión
 
-`0.1.0-beta.1`
+`0.2.0-beta.1`
 
 ## Licencia
 

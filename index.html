@@ -1,43 +1,13 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Evaluación inicial y explicable de controles de compliance." />
-    <title>Compliance Pulse · Beta</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <div>
-        <p class="eyebrow">COMPLIANCE PULSE <span>BETA</span></p>
-        <h1>Una señal clara sobre tu postura de cumplimiento.</h1>
-        <p class="intro">Completa una revisión rápida y obtén un score orientativo, riesgos prioritarios y próximos pasos.</p>
-      </div>
-      <div class="pulse" aria-hidden="true"><i></i><i></i><i></i></div>
-    </header>
-
-    <main>
-      <section class="panel" aria-labelledby="assessment-title">
-        <div class="section-heading">
-          <div><p class="step">01 · CONTEXTO</p><h2 id="assessment-title">Evaluación inicial</h2></div>
-          <button id="reset" class="text-button" type="button">Reiniciar</button>
-        </div>
-
-        <form id="assessment-form">
-          <div class="identity-grid">
-            <label>Organización o activo<input id="organization" name="organization" required maxlength="80" placeholder="Ej. Acme España" /></label>
-            <label>Sector<select id="sector" name="sector" required><option value="">Seleccionar</option><option>Tecnología</option><option>Servicios financieros</option><option>Salud</option><option>Retail</option><option>Industria</option><option>Otro</option></select></label>
-          </div>
-
-          <fieldset id="controls"><legend><span>02 · CONTROLES</span>Indica el estado actual</legend></fieldset>
-          <button class="primary" type="submit">Calcular Compliance Pulse <span>→</span></button>
-        </form>
-      </section>
-
-      <section id="result" class="panel result" aria-live="polite" hidden></section>
-      <p class="disclaimer">Herramienta orientativa. No constituye asesoramiento jurídico ni una auditoría formal.</p>
-    </main>
-    <script type="module" src="app.js"></script>
-  </body>
-</html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Diagnóstico sencillo de cumplimiento para pequeñas empresas."><meta name="theme-color" content="#101b35"><title>Compliance Pulse · Tu empresa, más tranquila</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<nav class="nav"><a class="brand" href="#top"><span class="brand-mark">CP</span><span>Compliance Pulse</span></a><span class="beta">BETA · ESPAÑA</span></nav>
+<header class="hero" id="top"><div class="hero-copy"><p class="kicker">Cumplir no debería empezar con palabras difíciles</p><h1>Descubre qué necesita <em>tu empresa</em> para estar más tranquila.</h1><p class="intro">Te hacemos preguntas normales sobre tu negocio. En menos de 8 minutos recibirás un mapa claro de riesgos y próximos pasos.</p><a class="primary hero-cta" href="#diagnostico">Empezar diagnóstico <span>→</span></a><div class="trust-row"><span>✓ Sin registro</span><span>✓ Tus datos no salen del navegador</span><span>✓ Lenguaje claro</span></div></div><aside class="hero-card"><div class="signal"><i></i><i></i><i></i><i></i><i></i></div><strong>5 áreas esenciales</strong><p>Web y clientes · Datos personales · Equipo · Proveedores · Seguridad</p><div class="mini-score"><span>Tu hoja de ruta</span><b>8 min</b></div></aside></header>
+<main>
+<section class="benefits"><article><span>01</span><h2>Sin jerga legal</h2><p>Situaciones que reconocerás en el día a día.</p></article><article><span>02</span><h2>Prioridades reales</h2><p>Primero lo urgente; después, lo que puede esperar.</p></article><article><span>03</span><h2>Con explicación</h2><p>Cada recomendación cuenta qué evita y qué hacer.</p></article></section>
+<section class="assessment" id="diagnostico" aria-labelledby="assessment-title"><div class="assessment-top"><div><p class="kicker">Diagnóstico guiado</p><h2 id="assessment-title">Empecemos por conocer tu negocio</h2></div><button id="reset" class="text-button" type="button">Empezar de nuevo</button></div><div class="progress-wrap"><div class="progress-meta"><span id="progress-label">Contexto de la empresa</span><b id="progress-count">Paso 1 de 6</b></div><div class="progress-track"><i id="progress-bar"></i></div></div>
+<form id="assessment-form"><section class="form-step active" data-step="0"><div class="step-intro"><span class="step-icon">✦</span><div><h3>Cuéntanos lo básico</h3><p>Esto nos ayuda a poner tus respuestas en contexto. No guardamos esta información.</p></div></div><div class="identity-grid"><label>Nombre de la empresa<input id="organization" name="organization" required maxlength="80" placeholder="Ej. Carpintería El Olivo"></label><label>¿A qué se dedica?<select name="sector" required><option value="">Elige una opción</option><option>Comercio y venta online</option><option>Hostelería y turismo</option><option>Servicios profesionales</option><option>Construcción e industria</option><option>Salud y bienestar</option><option>Tecnología</option><option>Educación</option><option>Otro</option></select></label><label>¿Cuántas personas trabajan?<select name="employees" required><option value="">Elige una opción</option><option value="1–9">De 1 a 9</option><option value="10–49">De 10 a 49</option><option value="50+">50 o más</option></select></label><label>¿Cómo vendéis principalmente?<select name="sales" required><option value="">Elige una opción</option><option>Local u oficina</option><option>Internet</option><option>Ambas formas</option><option>No vendemos directamente</option></select></label></div></section><div id="question-steps"></div><div class="form-actions"><button id="back" class="secondary" type="button" hidden>← Anterior</button><button id="next" class="primary" type="button">Continuar <span>→</span></button><button id="submit" class="primary" type="submit" hidden>Ver mi hoja de ruta <span>→</span></button></div></form></section>
+<section id="result" class="result" aria-live="polite" hidden></section>
+<section class="method"><div><p class="kicker">Transparencia</p><h2>¿De dónde sale el resultado?</h2></div><p>De tus respuestas y de una matriz orientativa basada en materiales públicos de la AEPD, INCIBE y la legislación española. No inspeccionamos tu web ni certificamos que cumplas: te ayudamos a saber por dónde empezar.</p></section><p class="disclaimer">Compliance Pulse es una herramienta informativa. No constituye asesoramiento jurídico, auditoría ni certificación de cumplimiento.</p>
+</main><script type="module" src="app.js"></script></body></html>
