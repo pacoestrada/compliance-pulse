@@ -31,4 +31,4 @@ La aplicación se distribuye mediante GitHub Pages. GitHub puede procesar regist
 
 ## Alcance
 
-Esta nota describe la beta `0.3.0-beta.1`. Antes de convertirla en un servicio comercial deberá existir una política formal, una evaluación de proveedores, plazos de conservación y un mecanismo directo de ejercicio de derechos.
+Esta nota describe la beta `0.3.1-beta.1`. Antes de convertirla en un servicio comercial deberá existir una política formal, una evaluación de proveedores, plazos de conservación y un mecanismo directo de ejercicio de derechos.

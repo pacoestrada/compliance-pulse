@@ -60,4 +60,4 @@ La mayor ponderación interna refleja que una web no puede demostrar inventarios
 
 ## Versionado
 
-Los pesos y patrones pertenecen a la beta `0.3.0-beta.1`. Cualquier cambio material del modelo debe quedar reflejado en el changelog y en una nueva versión.
+Los pesos y patrones pertenecen a la beta `0.3.1-beta.1`. Cualquier cambio material del modelo debe quedar reflejado en el changelog y en una nueva versión.

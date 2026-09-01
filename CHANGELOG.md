@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.1-beta.1 — 2026-09-01
+
+- Nueva dirección visual cinematográfica inspirada en un thriller corporativo y un dossier de investigación.
+- Tipografía de cartel, negro de proyección, papel cálido y rojo de señal como identidad propia.
+- Portada recompuesta, encuadre de cámara, grano, ritmo editorial y lenguaje de producto diferencial.
+- Dashboard transformado en un archivo de exposición pública con KPIs, cartografía y evidencias.
+- Cuestionario y resultado integral rediseñados como expediente interno.
+- Adaptación completa a móvil, impresión y preferencias de movimiento reducido.
+
 ## 0.3.0-beta.1 — 2026-09-01
 
 - Añadido análisis real de URLs públicas.

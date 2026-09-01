@@ -98,7 +98,7 @@ CHANGELOG.md     Evolución de versiones
 
 ## Versión
 
-`0.3.0-beta.1`
+`0.3.1-beta.1`
 
 ## Licencia
 
