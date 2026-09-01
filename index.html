@@ -1,13 +1,80 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Diagnóstico sencillo de cumplimiento para pequeñas empresas."><meta name="theme-color" content="#101b35"><title>Compliance Pulse · Tu empresa, más tranquila</title><link rel="stylesheet" href="styles.css?v=0.2.0-beta.1-fix1"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Analiza las señales públicas de tu web y obtén una hoja de ruta de cumplimiento clara para tu pyme.">
+  <meta name="theme-color" content="#081226">
+  <title>Compliance Pulse · El pulso de cumplimiento de tu negocio</title>
+  <link rel="stylesheet" href="styles.css?v=0.3.0-beta.1">
+</head>
 <body>
-<nav class="nav"><a class="brand" href="#top"><span class="brand-mark">CP</span><span>Compliance Pulse</span></a><span class="beta">BETA · ESPAÑA</span></nav>
-<header class="hero" id="top"><div class="hero-copy"><p class="kicker">Cumplir no debería empezar con palabras difíciles</p><h1>Descubre qué necesita <em>tu empresa</em> para estar más tranquila.</h1><p class="intro">Te hacemos preguntas normales sobre tu negocio. En menos de 8 minutos recibirás un mapa claro de riesgos y próximos pasos.</p><a class="primary hero-cta" href="#diagnostico">Empezar diagnóstico <span>→</span></a><div class="trust-row"><span>✓ Sin registro</span><span>✓ Tus datos no salen del navegador</span><span>✓ Lenguaje claro</span></div></div><aside class="hero-card"><div class="signal"><i></i><i></i><i></i><i></i><i></i></div><strong>5 áreas esenciales</strong><p>Web y clientes · Datos personales · Equipo · Proveedores · Seguridad</p><div class="mini-score"><span>Tu hoja de ruta</span><b>8 min</b></div></aside></header>
-<main>
-<section class="benefits"><article><span>01</span><h2>Sin jerga legal</h2><p>Situaciones que reconocerás en el día a día.</p></article><article><span>02</span><h2>Prioridades reales</h2><p>Primero lo urgente; después, lo que puede esperar.</p></article><article><span>03</span><h2>Con explicación</h2><p>Cada recomendación cuenta qué evita y qué hacer.</p></article></section>
-<section class="assessment" id="diagnostico" aria-labelledby="assessment-title"><div class="assessment-top"><div><p class="kicker">Diagnóstico guiado</p><h2 id="assessment-title">Empecemos por conocer tu negocio</h2></div><button id="reset" class="text-button" type="button">Empezar de nuevo</button></div><div class="progress-wrap"><div class="progress-meta"><span id="progress-label">Contexto de la empresa</span><b id="progress-count">Paso 1 de 6</b></div><div class="progress-track"><i id="progress-bar"></i></div></div>
-<form id="assessment-form"><section class="form-step active" data-step="0"><div class="step-intro"><span class="step-icon">✦</span><div><h3>Cuéntanos lo básico</h3><p>Esto nos ayuda a poner tus respuestas en contexto. No guardamos esta información.</p></div></div><div class="identity-grid"><label>Nombre de la empresa<input id="organization" name="organization" required maxlength="80" placeholder="Ej. Carpintería El Olivo"></label><label>¿A qué se dedica?<select name="sector" required><option value="">Elige una opción</option><option>Comercio y venta online</option><option>Hostelería y turismo</option><option>Servicios profesionales</option><option>Construcción e industria</option><option>Salud y bienestar</option><option>Tecnología</option><option>Educación</option><option>Otro</option></select></label><label>¿Cuántas personas trabajan?<select name="employees" required><option value="">Elige una opción</option><option value="1–9">De 1 a 9</option><option value="10–49">De 10 a 49</option><option value="50+">50 o más</option></select></label><label>¿Cómo vendéis principalmente?<select name="sales" required><option value="">Elige una opción</option><option>Local u oficina</option><option>Internet</option><option>Ambas formas</option><option>No vendemos directamente</option></select></label></div></section><div id="question-steps"></div><div class="form-actions"><button id="back" class="secondary" type="button" hidden>← Anterior</button><button id="next" class="primary" type="button">Continuar <span>→</span></button><button id="submit" class="primary" type="submit" hidden>Ver mi hoja de ruta <span>→</span></button></div></form></section>
-<section id="result" class="result" aria-live="polite" hidden></section>
-<section class="method"><div><p class="kicker">Transparencia</p><h2>¿De dónde sale el resultado?</h2></div><p>De tus respuestas y de una matriz orientativa basada en materiales públicos de la AEPD, INCIBE y la legislación española. No inspeccionamos tu web ni certificamos que cumplas: te ayudamos a saber por dónde empezar.</p></section><p class="disclaimer">Compliance Pulse es una herramienta informativa. No constituye asesoramiento jurídico, auditoría ni certificación de cumplimiento.</p>
-</main><script type="module" src="app.js"></script></body></html>
+  <nav class="nav" aria-label="Navegación principal">
+    <a class="brand" href="#top" aria-label="Compliance Pulse, inicio"><span class="brand-mark">CP</span><span>Compliance Pulse</span></a>
+    <div class="nav-links"><a href="#como-funciona">Cómo funciona</a><a href="#diagnostico">Diagnóstico completo</a><span class="beta">BETA · ESPAÑA</span></div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-grid"></div>
+    <div class="hero-copy">
+      <p class="kicker"><span class="live-dot"></span> Tu primer radar de compliance</p>
+      <h1>Tu web ya cuenta una historia.<br><em>Vamos a leer sus riesgos.</em></h1>
+      <p class="intro">Escribe una URL y convierte señales públicas de privacidad, seguridad y transparencia en un scoring claro y una hoja de ruta priorizada.</p>
+      <form id="url-form" class="url-console" novalidate>
+        <label class="sr-only" for="website-url">Dirección de la página web</label>
+        <div class="url-prefix" aria-hidden="true">◎</div>
+        <input id="website-url" name="url" inputmode="url" autocomplete="url" placeholder="tuempresa.es" aria-describedby="url-help url-error" required>
+        <button class="primary scan-button" type="submit"><span>Analizar mi web</span><span aria-hidden="true">→</span></button>
+      </form>
+      <p id="url-error" class="form-error" role="alert" hidden></p>
+      <div class="hero-meta" id="url-help"><span>✓ Sin registro</span><span>✓ Solo información pública</span><span>✓ Informe listo para PDF</span></div>
+      <details class="privacy-note"><summary>¿Qué ocurre con la URL?</summary><p>La dirección pública se consulta mediante Jina Reader y MDN HTTP Observatory. No enviamos las respuestas del diagnóstico ni datos internos de tu empresa.</p></details>
+    </div>
+    <aside class="hero-visual" aria-label="Vista previa del panel">
+      <div class="visual-top"><span>COMPLIANCE SIGNAL</span><span class="online">LIVE</span></div>
+      <div class="visual-score"><div class="preview-ring"><strong>72</strong><small>/ 100</small></div><div><span>Nivel estimado</span><b>Buen punto de partida</b><small>8 señales comprobadas</small></div></div>
+      <div class="pulse-chart" aria-hidden="true"><i style="height:31%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:68%"></i><i style="height:53%"></i><i style="height:77%"></i><i style="height:64%"></i><i style="height:86%"></i><i style="height:72%"></i></div>
+      <div class="visual-legend"><span><i class="ok"></i>Detectado 5</span><span><i class="review"></i>Revisar 3</span><span><i class="risk"></i>Prioridad 2</span></div>
+    </aside>
+  </header>
+
+  <main>
+    <section class="proof-strip" aria-label="Características">
+      <article><span class="proof-icon">⌁</span><div><b>Análisis real</b><small>Contenido público + seguridad MDN</small></div></article>
+      <article><span class="proof-icon">◫</span><div><b>Evidencias visibles</b><small>Sabes qué se detectó y qué no</small></div></article>
+      <article><span class="proof-icon">↗</span><div><b>Decisiones claras</b><small>Acciones por impacto y urgencia</small></div></article>
+    </section>
+
+    <section id="scan-progress" class="scan-progress" aria-live="polite" hidden>
+      <div class="scanner-orbit"><i></i><span>CP</span></div>
+      <div><p class="kicker">Análisis en curso</p><h2 id="scan-message">Preparando la comprobación…</h2><p>Normalmente tarda entre 10 y 40 segundos. No cierres esta pestaña.</p><div class="scan-track"><i id="scan-bar"></i></div><div class="scan-stages"><span class="active">Conexión</span><span>Contenido</span><span>Seguridad</span><span>Scoring</span></div></div>
+    </section>
+
+    <section id="scan-report" class="scan-report" aria-live="polite" hidden></section>
+
+    <section class="workflow" id="como-funciona">
+      <div class="section-heading"><div><p class="kicker">Del síntoma a la decisión</p><h2>Una radiografía que cualquiera puede entender.</h2></div><p>El análisis automático encuentra señales públicas. El diagnóstico guiado completa lo que una web nunca puede demostrar: procesos, contratos, copias, accesos y responsabilidades.</p></div>
+      <div class="workflow-grid"><article><span>01</span><h3>Introduce tu web</h3><p>Comprobamos contenido visible, políticas enlazadas, HTTPS y cabeceras defensivas.</p></article><article><span>02</span><h3>Entiende las señales</h3><p>Cada hallazgo incluye evidencia, nivel de confianza y una explicación sin jerga.</p></article><article><span>03</span><h3>Completa el contexto</h3><p>Responde solo a cuestiones que no pueden verificarse mirando una página pública.</p></article><article><span>04</span><h3>Actúa por prioridad</h3><p>Obtén un plan práctico y un informe ejecutivo que puedes guardar como PDF.</p></article></div>
+    </section>
+
+    <section class="assessment" id="diagnostico" aria-labelledby="assessment-title">
+      <div class="assessment-top"><div><p class="kicker">Diagnóstico humano</p><h2 id="assessment-title">Completa lo que tu web no puede contar</h2><p class="assessment-lead">17 preguntas cotidianas para mirar dentro del negocio. Puedes hacerlo con o sin análisis previo.</p></div><button id="reset" class="text-button" type="button">Empezar de nuevo</button></div>
+      <div class="progress-wrap"><div class="progress-meta"><span id="progress-label">Contexto de la empresa</span><b id="progress-count">Paso 1 de 6</b></div><div class="progress-track"><i id="progress-bar"></i></div></div>
+      <form id="assessment-form">
+        <section class="form-step active" data-step="0"><div class="step-intro"><span class="step-icon">✦</span><div><h3>Cuéntanos lo básico</h3><p>Esto nos ayuda a poner tus respuestas en contexto. No guardamos esta información.</p></div></div><div class="identity-grid"><label>Nombre de la empresa<input id="organization" name="organization" required maxlength="80" placeholder="Ej. Carpintería El Olivo"></label><label>¿A qué se dedica?<select name="sector" required><option value="">Elige una opción</option><option>Comercio y venta online</option><option>Hostelería y turismo</option><option>Servicios profesionales</option><option>Construcción e industria</option><option>Salud y bienestar</option><option>Tecnología</option><option>Educación</option><option>Otro</option></select></label><label>¿Cuántas personas trabajan?<select name="employees" required><option value="">Elige una opción</option><option value="1–9">De 1 a 9</option><option value="10–49">De 10 a 49</option><option value="50+">50 o más</option></select></label><label>¿Cómo vendéis principalmente?<select name="sales" required><option value="">Elige una opción</option><option>Local u oficina</option><option>Internet</option><option>Ambas formas</option><option>No vendemos directamente</option></select></label></div></section>
+        <div id="question-steps"></div>
+        <div class="form-actions"><button id="back" class="secondary" type="button" hidden>← Anterior</button><button id="next" class="primary" type="button">Continuar <span>→</span></button><button id="submit" class="primary" type="submit" hidden>Ver mi hoja de ruta <span>→</span></button></div>
+      </form>
+    </section>
+
+    <section id="assessment-result" class="result" aria-live="polite" hidden></section>
+
+    <section class="method">
+      <div><p class="kicker">Transparencia por diseño</p><h2>Un score con límites claros.</h2></div>
+      <div><p>Las señales web proceden del contenido público leído por <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Jina Reader</a> y de las comprobaciones de <a href="https://developer.mozilla.org/es/observatory" target="_blank" rel="noopener">MDN HTTP Observatory</a>. El diagnóstico se apoya en materiales públicos para pymes de la AEPD, recomendaciones de INCIBE y legislación española.</p><p><strong>No detectado</strong> no siempre significa inexistente; <strong>detectado</strong> tampoco acredita que el contenido sea correcto. Por eso mostramos evidencia y confianza.</p></div>
+    </section>
+    <p class="disclaimer">Compliance Pulse es una herramienta informativa en beta. No constituye asesoramiento jurídico, auditoría, análisis de vulnerabilidades ni certificación de cumplimiento.</p>
+  </main>
+  <script type="module" src="app.js?v=0.3.0-beta.1"></script>
+</body>
+</html>

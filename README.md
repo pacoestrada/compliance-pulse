@@ -1,28 +1,59 @@
 # Compliance Pulse
 
-Beta funcional de una evaluación guiada de compliance para pequeñas y medianas empresas españolas sin conocimientos previos. Traduce situaciones cotidianas del negocio en un mapa orientativo de riesgos y próximos pasos.
+Radar de señales públicas y diagnóstico guiado de cumplimiento para pequeñas y medianas empresas españolas sin conocimientos previos. Convierte lo que una web deja ver —y lo que el negocio confirma— en un scoring explicable, un panel ejecutivo y una hoja de ruta priorizada.
 
-> **Beta orientativa:** no sustituye asesoramiento jurídico ni una auditoría formal.
+> **Beta orientativa:** no sustituye asesoramiento jurídico, una auditoría, un análisis de vulnerabilidades ni una certificación.
 
-## Probar ahora
+## Probar la beta
 
-La forma recomendada de probar esta beta es abrirla directamente en el navegador:
+La forma recomendada de probar Compliance Pulse es abrirla en el navegador:
 
 ### [Abrir Compliance Pulse](https://pacoestrada.github.io/compliance-pulse/)
 
-No requiere instalación, descarga ni registro. Los datos introducidos se procesan únicamente en el navegador.
+No requiere instalación, descarga ni registro. Los paquetes para Linux (`.deb` y Flatpak) están previstos para una fase posterior.
 
-Los paquetes instalables para Linux (`.deb` y Flatpak) están previstos para una fase posterior del proyecto.
+## Qué incluye la beta 0.3
 
-## Ejecutar
+- Análisis de cualquier URL pública `http` o `https`.
+- Lectura de señales visibles: políticas, cookies, aviso legal, formularios, contacto y venta online.
+- Revisión real de HTTPS y cabeceras defensivas mediante MDN HTTP Observatory.
+- Score web de 0 a 100 con cobertura del análisis separada del resultado.
+- Panel visual por áreas, plan de choque y registro filtrable de evidencias.
+- Historial local de los últimos análisis para mostrar evolución.
+- Diagnóstico interno de 17 preguntas en lenguaje cotidiano.
+- Pulso integral opcional: 35% señales públicas y 65% diagnóstico interno.
+- Informe adaptable a móvil y preparado para guardar como PDF desde el navegador.
+- Tolerancia a fallos: una fuente no disponible reduce la cobertura y nunca se convierte en una evidencia inventada.
 
-No requiere dependencias. Con Python 3:
+## Cómo funciona
+
+La aplicación es estática y puede alojarse en GitHub Pages. Al analizar una web realiza dos consultas desde el navegador:
+
+1. **Jina Reader** convierte el contenido público en texto para localizar indicios visibles. La petición incluye la preferencia `DNT`.
+2. **MDN HTTP Observatory** comprueba cabeceras y prácticas defensivas del dominio.
+
+El motor clasifica cada control como `Detectado`, `Revisar`, `Prioridad`, `No comprobado` o `No observado`. Las señales no aplicables y las que no se han podido comprobar se excluyen del score; su ausencia reduce la cobertura.
+
+Consulta [METHODOLOGY.md](METHODOLOGY.md) para ver controles, pesos, límites y fórmula.
+
+## Datos y privacidad
+
+- La URL pública y el nombre de host se transmiten a Jina Reader y MDN HTTP Observatory para realizar el análisis.
+- Las respuestas del diagnóstico, el nombre de empresa, el sector y el tamaño no se envían a ningún servidor.
+- El navegador conserva localmente hasta 24 resúmenes —dominio, score y fecha— para mostrar tendencia.
+- Compliance Pulse no crea cuentas ni instala cookies propias.
+
+Consulta [PRIVACY.md](PRIVACY.md) para conocer el flujo de datos y cómo borrar el historial local.
+
+## Ejecutar en local
+
+No requiere instalar dependencias. Con Python 3:
 
 ```bash
 npm start
 ```
 
-Abre [http://localhost:4173](http://localhost:4173). Servirlo por HTTP evita las restricciones que algunos navegadores aplican a los módulos JavaScript abiertos directamente desde disco.
+Abre [http://localhost:4173](http://localhost:4173).
 
 ## Pruebas
 
@@ -32,44 +63,42 @@ Requiere Node.js 18 o superior:
 npm test
 ```
 
-## Alcance de la beta
+Las pruebas cubren scoring, respuestas `No aplica`, priorización, normalización segura de URL, bloqueo de destinos locales, detección de señales y degradación cuando falla un proveedor.
 
-- Recorrido guiado de seis pasos con 17 preguntas en lenguaje cotidiano.
-- Cinco áreas: clientes y web, datos personales, equipo, proveedores y seguridad.
-- Respuestas claras: Sí, A medias / no estoy seguro, No y No aplica.
-- Score ponderado de 0 a 100.
-- Puntuación desglosada por áreas.
-- Cinco acciones prioritarias con explicación del riesgo que ayudan a reducir.
-- Informe imprimible.
-- Diseño adaptable a móvil y accesibilidad básica.
-- Sin recogida ni envío de datos: todo se procesa en el navegador.
+## Fuentes y criterio
 
-## Criterio y fuentes
+- [Orientación para pymes de la AEPD](https://www.aepd.es/derechos-y-deberes/cumple-tus-deberes/directrices-de-aplicacion/pymes)
+- [Guía sobre el uso de cookies de la AEPD](https://www.aepd.es/guias/guia-cookies.pdf)
+- [Recursos para empresas de INCIBE](https://www.incibe.es/empresas)
+- [MDN HTTP Observatory](https://developer.mozilla.org/en-US/observatory)
+- [Ley 2/2023, de protección de las personas informantes](https://boe.es/eli/es/l/2023/02/20/2/con)
 
-El diagnóstico se basa en una matriz orientativa elaborada a partir de materiales públicos para pymes de la Agencia Española de Protección de Datos (AEPD), recomendaciones de ciberseguridad de INCIBE y normativa española aplicable, incluida la Ley 2/2023 para sistemas internos de información.
-
-No inspecciona la web ni los documentos de la empresa y no certifica el cumplimiento. El resultado depende de las respuestas declaradas y debe validarse con evidencias y asesoramiento profesional cuando proceda.
+`Detectado` significa que existe un indicio público, no que el contenido sea completo o jurídicamente correcto. `No detectado` tampoco demuestra su inexistencia: algunas páginas bloquean lectores, cargan contenido de forma dinámica o ubican información fuera de la portada.
 
 ## Estructura
 
 ```text
-index.html      Interfaz
-styles.css      Diseño visual adaptable
-app.js          Controles, cálculo y presentación
-app.test.js     Pruebas del motor de scoring
+index.html       Interfaz y estructura semántica
+styles.css       Sistema visual, dashboard, móvil e impresión
+app.js           Diagnóstico interno, informes e interacción
+scanner.js       URL segura, proveedores, evidencias y scoring web
+app.test.js      Pruebas automáticas del motor
+METHODOLOGY.md   Método, pesos y límites
+PRIVACY.md       Flujo de datos y privacidad
+CHANGELOG.md     Evolución de versiones
 ```
 
 ## Próximos pasos
 
-1. Preparar paquetes instalables para Linux (`.deb` y Flatpak).
-2. Persistir evaluaciones y permitir exportarlas.
-3. Añadir perfiles normativos configurables (RGPD, ISO 27001, canal de denuncias).
-4. Incorporar evidencias, responsables y fechas objetivo.
-5. Validar el modelo de scoring con especialistas.
+1. Backend propio para controlar disponibilidad, auditoría de proveedores y límites de uso.
+2. Análisis multipágina y validación más precisa de políticas y formularios.
+3. Evidencias, responsables, fechas objetivo y seguimiento de acciones.
+4. Perfiles normativos configurables y revisión del scoring por especialistas.
+5. Exportación PDF nativa y paquetes instalables para Linux.
 
 ## Versión
 
-`0.2.0-beta.1`
+`0.3.0-beta.1`
 
 ## Licencia
 
